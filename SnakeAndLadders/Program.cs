@@ -22,29 +22,51 @@ namespace SnakeAndLadders
         {
             Random random = new Random();
 
-            int Check_Snake_or_Ladder = random.Next(0, 3);
-             
-            int dice = random.Next(1, 7);
-
             int position = 0;
 
-            if (Check_Snake_or_Ladder == 1)
+            int count = 0;
+            int n = 100; 
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("Ladder");
-                position = position + dice;
-                Console.WriteLine("postion moved " +position);
-            }
-            else if (Check_Snake_or_Ladder == 2)
-            {
-                Console.WriteLine("Snake");
+                while (count <= 100)
+                {
+                    int Check_Snake_or_Ladder = random.Next(0, 3);
 
-                position = position - dice;
-                Console.WriteLine("Position drops " + position);
+                    int dice = random.Next(1, 7);
+
+
+                    if (position == 0)
+                    {
+
+                        if (Check_Snake_or_Ladder == 1)
+                        {
+                            Console.WriteLine("Ladder");
+                            position = position + dice;
+                            Console.WriteLine("postion moved " +position);
+                        }
+                        else if (Check_Snake_or_Ladder == 2)
+                        {
+                            Console.WriteLine("Snake");
+
+                            position = position - dice;
+                            Console.WriteLine("Position drops " + position);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No play");
+                        }
+                    }
+                    else if (position == 100)
+                    {
+                        Console.WriteLine("Player has won");
+                    }
+
+                    count++;
+                }
             }
-            else
-            {
-                Console.WriteLine("No play");
-            }
+
+
+            
 
 
            /*
