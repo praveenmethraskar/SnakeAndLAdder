@@ -24,60 +24,51 @@ namespace SnakeAndLadders
 
             int position = 0;
 
-            int count = 0;
-            int n = 100; 
-            for (int i = 0; i < n; i++)
+            //int count = 0;
+            int n = 100;
+
+            while (position < n)
             {
-                while (count <= 100)
-                {
-                    int Check_Snake_or_Ladder = random.Next(0, 3);
+                int Check_Snake_or_Ladder = random.Next(0, 3);
 
-                    int dice = random.Next(1, 7);
+                int dice = random.Next(1, 7);
 
-
-                    if (position == 0)
+                 
+                    if (Check_Snake_or_Ladder == 1)
                     {
-
-                        if (Check_Snake_or_Ladder == 1)
+                        Console.WriteLine("Ladder");
+                        position = position + dice;
+                        Console.WriteLine("postion moved " +position);
+                        if(position > n)
                         {
-                            Console.WriteLine("Ladder");
-                            position = position + dice;
-                            Console.WriteLine("postion moved " +position);
-                        }
-                        else if (Check_Snake_or_Ladder == 2)
-                        {
-                            Console.WriteLine("Snake");
-
                             position = position - dice;
-                            Console.WriteLine("Position drops " + position);
                         }
-                        else
+                        else if(position == 100)
                         {
-                            Console.WriteLine("No play");
+                        Console.WriteLine("Player has won");
                         }
                     }
-                    else if (position == 100)
+                    else if (Check_Snake_or_Ladder == 2)
                     {
-                        Console.WriteLine("Player has won");
+                        Console.WriteLine("Snake");
+
+                        position = position - dice;
+                        Console.WriteLine("Position drops " + position);
+                        if (position < 0)
+                        {
+                            position = 0;
+                        }
                     }
+                    else
+                    {
+                        Console.WriteLine("No play");
+                    }
+               
+ 
 
-                    count++;
-                }
+               // count++;
+
             }
-
-
-            
-
-
-           /*
-            Console.WriteLine(" number after die rolled " + dice);
-
-            int position = 0;
-            if (position == 0)
-            {
-                Console.WriteLine("single player with 0th position");
-            }
-            */
         }
     }
 
